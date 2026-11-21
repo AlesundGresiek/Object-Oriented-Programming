@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+
+class Publication{
+	protected:
+		string title;
+		float price;
+	public:
+		getPubData(){
+			cout << "Enter Title:\t";
+			cin >> title;
+			cout << "Enter Price:\t";
+			cin >> price;
+		}
+		displayPubData(){
+			cout << "Title:\t" << title << endl;
+			cout << "Price:\t" << price << endl;
+		}
+};
+
+class Book : protected Publication{
+	private:
+		int pages;
+	public:
+		getBookData(){
+			getPubData();
+			cout << "Enter Number of Pages:\t";
+			cin >> pages;
+		}
+		displayBookData(){
+			displayPubData();
+			cout << "Pages:\t" << pages << endl;
+
+		}
+};
+
+class Tape : protected Publication{
+	private:
+		float minutes;
+	public:
+		getTapeData(){
+			getPubData();
+			cout << "Enter Runtime in Minutes:\t";
+			cin >> minutes;
+		}
+		displayTapeData(){
+			displayPubData();
+			cout << "Minutes:\t" << minutes << endl;
+		}
+};
+
+int main(){
+	Publication p1;
+	Book b1;
+	Tape t1;
+	p1.getPubData();
+	p1.displayPubData();
+	b1.getBookData();
+	b1.displayBookData();
+	t1.getTapeData();
+	t1.displayTapeData();
+}
